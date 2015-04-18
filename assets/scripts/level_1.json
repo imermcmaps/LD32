@@ -1,5 +1,5 @@
 {
-    "size": [1024, 576],
+    "size": [3000, 576],
     "pixelToMeter": 60.0,
     "gravity": [0, 5],
     "debug": false,
@@ -10,14 +10,17 @@
     "ui": [
         {
             "childData": "assets/scripts/selector.json"
+        },
+        {
+            "childData": "assets/scripts/ui_paused.json"
         }
     ],
     "children": [
         {
             "type" : "sprite",
-            "size": [1024, 576],
+            "size": [3000, 576],
             "sprite": {
-                "texture": "assets/images/level.png"
+                "texture": "assets/images/level1.png"
             }
         },
         {
@@ -26,18 +29,46 @@
                 "type": "static",
                 "shapes": [
                     {"type":"edge", "points": [[0,0], [0,576]]},
-                    {"type":"edge", "points": [[0,576], [1024,576]]},
-                    {"type":"edge", "points": [[1024,576], [1024,0]]}
+                    {"type":"edge", "points": [[0,576], [3000,576]]},
+                    {"type":"edge", "points": [[3000,576], [3000,0]]}
                 ]
             }
         },
         {
-            "position": [512, 100],
+            "position": [100, 100],
             "childData": "assets/scripts/slayer.json"
         },
         {
-            "position": [512, 100],
-            "childData": "assets/scripts/selector_item.json"
+            "position": [200, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [300, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [400, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [500, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [600, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [700, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [800, 100],
+            "childData": "assets/scripts/enemy_bat.json"
+        },
+        {
+            "position": [900, 100],
+            "childData": "assets/scripts/enemy_bat.json"
         }
     ]
 }

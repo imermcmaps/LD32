@@ -16,6 +16,9 @@ set(SOURCE_FILES main.cpp
     Level.cpp
     WeaponSelector.cpp
     misc.cpp
+    Projectile.cpp
+    Enemy.cpp
+    Bat.cpp
 )
 add_executable(LD32 ${SOURCE_FILES})
 

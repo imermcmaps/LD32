@@ -3,6 +3,7 @@
     "sprites": [
         {"left":0, "top":0, "width":10, "height": 10},
         {"left":10, "top":0, "width":10, "height": 10},
-        {"left":20, "top":0, "width":10, "height": 10}
+        {"left":20, "top":0, "width":10, "height": 10},
+        {"left":0, "top":10, "width":25, "height": 18}
     ]
 }

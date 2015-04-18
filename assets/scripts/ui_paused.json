@@ -1,0 +1,42 @@
+{
+    "type": "sprite",
+    "identifier": "paused",
+    "active": false,
+    "size": [1024, 576],
+    "sprite": {
+        "texture": "assets/images/paused_bg.png"
+    },
+    "children" : [
+        {
+            "type":"sprite",
+            "origin": "center",
+            "size": [280, 60],
+            "position": [512, 200],
+            "sprite": {
+                "sheet": "assets/scripts/text_sheet.json",
+                "index": 5
+            }
+        },
+        {
+            "type": "button",
+            "identifier": "button",
+            "size": [153, 30],
+            "position": [512, 400],
+            "origin": "center",
+            "sprite": {
+                "sheet": "assets/scripts/text_sheet.json",
+                "animations": {
+                    "default": {
+                        "frames": [6]
+                    },
+                    "hover" : {
+                        "frames": [7]
+                    },
+                    "active" : {
+                        "frames": [8]
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -30,17 +30,19 @@ protected:
 	float m_jumpCooldown;
 	WeaponType m_weaponType;
 	State m_state;
+	Node* m_weapon;
 	ContactHandler m_contactHandler;
+	float m_shootTime;
 public:
 	Slayer(engine::Scene* scene);
 	virtual ~Slayer();
 
-    void SetWeaponType(WeaponType weaponType) {
-    	m_weaponType = weaponType;
-		PlayAni();
-    }
+    void SetWeaponType(WeaponType weaponType);
 	
 	void PlayAni(std::string after="");
+
+	virtual void SetFlipped(bool flipped);
+
 	
 protected:
 	virtual void OnUpdate(sf::Time interval);

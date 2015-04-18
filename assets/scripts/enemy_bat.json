@@ -1,0 +1,41 @@
+{
+    "type" :"bat", 
+    "health": 5,
+    "size" : [84, 28],
+    "origin": "center",
+    "sprite": {
+        "sheet" : {
+            "texture" : "assets/images/bat.png",
+            "sprites": [
+                {"left":0, "top":0, "width":42, "height":14},
+                {"left":0, "top":14, "width":42, "height":14},
+                {"left":0, "top":28, "width":42, "height":14},
+                {"left":0, "top":42, "width":42, "height":14},
+                {"left":0, "top":56, "width":42, "height":14},
+                {"left":0, "top":70, "width":42, "height":14}
+            ]
+        },
+        "animations": {
+            "default": {
+                "frames": [0,1,2,1],
+                "speed": 0.1,
+                "loop": true
+            },
+            "death": {
+                "frames": [3, 4, 5],
+                "speed": 0.07,
+                "loop": false
+            }
+        }
+    },
+    "body": {
+        "fixedRotation": true,
+        "linearDamping": 0.8,
+        "gravityScale": 0,
+        "bullet": true,
+        "type":"dynamic",
+        "shapes": [
+            {"type":"box", "width": 60, "height": 25, "category":8, "mask": 8}
+        ]
+    }
+}

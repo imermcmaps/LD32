@@ -1,0 +1,43 @@
+{
+    "type": "projectile",
+    "size": [6, 6],
+    "origin": "center",
+    "damage": 0,
+    "sprite": {
+        "sheet": {
+            "texture": "assets/images/particle.png",
+            "sprites": [
+                {
+                    "left": 0,
+                    "top": 0,
+                    "width": 3,
+                    "height": 3
+                }
+            ]
+        },
+        "animations": {
+            "default": {
+                "frames": [0],
+                "speed": 2,
+                "loop": false
+            },
+            "hit": {
+                "frames": [0],
+                "speed": 0,
+                "loop": false
+            }
+        }
+
+    },
+    "body": {
+        "shapes": [
+            {
+                "type": "circle",
+                "radius": 1,
+                "density": 1,
+                "category": 4,
+                "mask": 12
+            }
+        ]
+    }
+}

@@ -18,7 +18,7 @@ WeaponSelector::~WeaponSelector() {
 }
 
 void WeaponSelector::Select(WeaponType wt) {
-	engine::Node* nchild = GetChildByID(FromWT(wt));
+	engine::Node* nchild = GetChildByID(weapons[wt].name);
 	if (!nchild || nchild->GetType() != engine::NT_SPRITE) {
 		return;
 	}
@@ -27,7 +27,7 @@ void WeaponSelector::Select(WeaponType wt) {
 		m_disabledSound->play();
 		return;
 	}
-	engine::Node* noldChild = GetChildByID(FromWT(m_current));
+	engine::Node* noldChild = GetChildByID(weapons[m_current].name);
 	if (noldChild && noldChild->GetType() == engine::NT_SPRITE) {
 		static_cast<engine::SpriteNode*>(noldChild)->PlayAnimation("default");
 	}

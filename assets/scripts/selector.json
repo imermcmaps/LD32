@@ -18,18 +18,19 @@
             ]
         },
         {
-            "position": [40, 0],
+            "position": [50, 0],
             "identifier": "crossbow",
             "childData": "assets/scripts/selector_item.json",
             "children": [
                 {
                     "type":"sprite",
-                    "size": [24, 18],
+                    "size": [25, 18],
                     "position": [20, 20],
                     "rotation": -45,
                     "origin": "center",
                     "sprite": {
-                        "texture" : "assets/images/crossbow.png"
+                        "sheet" : "assets/scripts/ui_sheet.json",
+                        "index": 3
                     }
                 },
                 {

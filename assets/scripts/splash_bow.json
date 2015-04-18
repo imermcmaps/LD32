@@ -1,10 +1,11 @@
 {
     "type" : "sprite",
-    "size": [72, 54],
+    "size": [75, 54],
     "position": [716, 225],
     "rotation": -30,
     "origin": "top-center",
     "sprite": {
-        "texture" : "assets/images/crossbow.png"
+        "sheet" : "assets/scripts/ui_sheet.json",
+        "index": 3
     }
 }

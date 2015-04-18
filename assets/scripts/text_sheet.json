@@ -5,6 +5,11 @@
         {"left":0, "top":15, "width": 157, "height":39},
         {"left":0, "top":54, "width": 42, "height":10},
         {"left":42, "top":54, "width": 42, "height":10},
-        {"left":84, "top":54, "width": 42, "height":10}
+        {"left":84, "top":54, "width": 42, "height":10},
+        {"left":0, "top":64, "width": 70, "height":15, "_comment": "5_paused"},
+        {"left":70, "top":64, "width": 51, "height":10, "_comment": "6_resume"},
+        {"left":70, "top":74, "width": 51, "height":10},
+        {"left":70, "top":84, "width": 51, "height":10}
+        
     ]
 }
