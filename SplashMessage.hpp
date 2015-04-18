@@ -1,12 +1,5 @@
-/* 
- * File:   SplashMessage.hpp
- * Author: iMer
- *
- * Created on 18. April 2015, 04:21
- */
-
-#ifndef SPLASHMESSAGE_HPP
-#define	SPLASHMESSAGE_HPP
+#ifndef LD32_SPLASHMESSAGE_HPP
+#define	LD32_SPLASHMESSAGE_HPP
 #include <Engine/SpriteNode.hpp>
 class SplashMessage: public engine::SpriteNode {
 protected:

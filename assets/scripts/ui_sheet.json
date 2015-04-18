@@ -1,0 +1,8 @@
+{
+    "texture":"assets/images/ui.png",
+    "sprites": [
+        {"left":0, "top":0, "width":10, "height": 10},
+        {"left":10, "top":0, "width":10, "height": 10},
+        {"left":20, "top":0, "width":10, "height": 10}
+    ]
+}

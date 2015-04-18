@@ -1,0 +1,48 @@
+{
+    "type":"selector",
+    "position": [30, 30],
+    "children": [
+        {
+            "identifier": "none",
+            "childData": "assets/scripts/selector_item.json",
+            "children": [
+                {
+                    "type": "text",
+                    "position": [5,20],
+                    "text": {
+                        "font": "assets/lcd_solid.ttf",
+                        "size": 15, 
+                        "text": "1"
+                    }
+		}
+            ]
+        },
+        {
+            "position": [40, 0],
+            "identifier": "crossbow",
+            "childData": "assets/scripts/selector_item.json",
+            "children": [
+                {
+                    "type":"sprite",
+                    "size": [24, 18],
+                    "position": [20, 20],
+                    "rotation": -45,
+                    "origin": "center",
+                    "sprite": {
+                        "texture" : "assets/images/crossbow.png"
+                    }
+                },
+                {
+                    "type": "text",
+                    "position": [5,20],
+                    "text": {
+                        "font": "assets/lcd_solid.ttf",
+                        "size": 15, 
+                        "text": "2"
+                    }
+		}
+            ]
+        }
+        
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "type": "slayer",
+    "size": [44, 116],
+    "_spritesize": [22, 58],
+    "origin":"center",
+    "body": {
+        "fixedRotation": true,
+        "linearDamping": 2,
+        "bullet": true,
+        "type":"dynamic",
+        "shapes": [
+            {"type":"box", "width": 30, "height": 90},
+            {"type":"circle", "radius": 15, "y":43}
+        ]
+    },
+    "sprite": {
+        "sheet": {
+            "texture": "assets/images/slayer.png",
+            "sprites": [
+                {"left":0, "top":0, "width":22, "height":58, "_comment": "blank"},
+                {"left":22, "top":0, "width":22, "height":58},
+                {"left":44, "top":0, "width":22, "height":58},
+                {"left":0, "top":58, "width":22, "height":58, "_comment": "bow"},
+                {"left":22, "top":58, "width":22, "height":58},
+                {"left":44, "top":58, "width":22, "height":58}
+            ]
+        },
+        "animations": {
+            "default": {
+                "frames": [0]
+            },
+            "running": {
+                "frames": [1, 2], 
+                "speed": 0.25,
+                "loop": true
+            },
+            "crossbow_default": {
+                "frames": [3]
+            },
+            "crossbow_running": {
+                "frames": [4, 5], 
+                "speed": 0.25,
+                "loop": true
+            }
+        }
+    }
+}

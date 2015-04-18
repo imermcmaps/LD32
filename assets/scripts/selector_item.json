@@ -1,0 +1,18 @@
+{
+    "type": "sprite",
+    "size" : [40,40],
+    "sprite": {
+        "sheet": "assets/scripts/ui_sheet.json",
+        "animations": {
+            "default": {
+                "frames":[0]
+            },
+            "active": {
+                "frames":[1]
+            },
+            "disabled": {
+                "frames":[2]
+            }
+        }
+    }
+}

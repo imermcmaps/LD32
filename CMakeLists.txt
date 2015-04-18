@@ -12,6 +12,10 @@ set(SOURCE_FILES main.cpp
     LD32.cpp
     SplashMessage.cpp
     TitleScreen.cpp
+    Slayer.cpp
+    Level.cpp
+    WeaponSelector.cpp
+    misc.cpp
 )
 add_executable(LD32 ${SOURCE_FILES})
 
