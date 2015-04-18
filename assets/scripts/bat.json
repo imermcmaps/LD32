@@ -1,0 +1,21 @@
+{
+    "type" :"sprite", 
+    "size" : [84, 28],
+    "sprite": {
+        "sheet" : {
+            "texture" : "assets/images/bat.png",
+            "sprites": [
+                {"left":0, "top":0, "width":42, "height":14},
+                {"left":0, "top":14, "width":42, "height":14},
+                {"left":0, "top":28, "width":42, "height":14}
+            ]
+        },
+        "animations": {
+            "default": {
+                "frames": [0,1,2,1],
+                "speed": 0.1,
+                "loop": true
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+	"size": [1024, 576],
+	"pixelToMeter": 50.0,
+	"gravity": [0, 2],
+	"debug": false,
+	"light": {
+		"enabled": false,
+		"ambient": [234, 245, 255]
+	},
+	"ui": [],
+        "children": [
+            {
+                "type" : "sprite",
+                "size": [1024, 576],
+                "sprite": {
+                    "texture": "assets/images/title_screen_bg.png"
+                }
+            },
+            {
+                "childData": "assets/scripts/logo.json"
+            }
+        ]
+}

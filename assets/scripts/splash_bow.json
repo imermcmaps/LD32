@@ -1,0 +1,10 @@
+{
+    "type" : "sprite",
+    "size": [72, 54],
+    "position": [716, 225],
+    "rotation": -30,
+    "origin": "top-center",
+    "sprite": {
+        "texture" : "assets/images/crossbow.png"
+    }
+}

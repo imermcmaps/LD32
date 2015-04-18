@@ -1,0 +1,10 @@
+{
+    "type": "sprite",
+    "size": [471, 117],
+    "origin": "center",
+    "position": [512, 150],
+    "sprite": {
+        "sheet":"assets/scripts/text_sheet.json",
+        "index": 1
+    }
+}

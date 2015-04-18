@@ -1,0 +1,11 @@
+{
+    "type" : "sprite",
+    "size": [300, 20],
+    "position": [700, 200],
+    "rotation": -30,
+    "origin": "bottom-center",
+    "sprite": {
+        "sheet": "assets/scripts/text_sheet.json",
+        "index": 0
+    }
+}

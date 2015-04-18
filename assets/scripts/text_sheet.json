@@ -1,0 +1,10 @@
+{
+    "texture" : "assets/images/text.png",
+    "sprites" : [
+        {"left":0, "top":5, "width": 150, "height":10},
+        {"left":0, "top":15, "width": 157, "height":39},
+        {"left":0, "top":54, "width": 42, "height":10},
+        {"left":42, "top":54, "width": 42, "height":10},
+        {"left":84, "top":54, "width": 42, "height":10}
+    ]
+}
