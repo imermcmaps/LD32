@@ -1,0 +1,7 @@
+{
+    "type": "sprite",
+    "size": [1024, 576],
+    "sprite" : {
+        "texture": "assets/images/loading_bg.png"
+    }
+}
