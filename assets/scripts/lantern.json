@@ -1,0 +1,22 @@
+{
+    "type": "sprite",
+    "size": [21, 36],
+    "origin":"center",
+    "sprite" : {
+        "sheet": "assets/scripts/misc_sheet.json",
+        "animations": {
+            "default": {
+                "frames": [2, 3, 4, 3],
+                "speed": 0.1
+            }
+        }
+    },
+    "children": [
+        { 
+            "type":"light",
+            "radius":150,
+            "color": [255, 163, 45],
+            "position": [25, 11]         
+        }
+    ]
+}

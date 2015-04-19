@@ -1,6 +1,7 @@
 #include "Slayer.hpp"
 #include "Engine/Scene.hpp"
 #include "Level.hpp"
+#include "LD32.hpp"
 #include "Engine/Factory.hpp"
 #include <SFML/Window.hpp>
 #include <Engine/Game.hpp>
@@ -9,13 +10,15 @@
 #include <limits>
 Slayer::Slayer(engine::Scene* scene): Damagable(scene), m_maxVelocity(20, 1), 
 		m_velocityIncrease(6, 10), m_contactHandler(this), m_state(STANDING), 
-		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{}, m_invulnTime(0),
+		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{},
 		m_respawnTimer(10.0f) {
 	m_scene->OnContact.AddHandler(&m_contactHandler);
 	static_cast<Level*>(scene)->SetSlayer(this);
+	static_cast<Level*>(scene)->DecEnemies();
 	// Remove damagable enemy hit handler
 	m_scene->OnContactPreSolve.RemoveHandler(&m_preCH);
 	m_health = m_maxHealth = 100;
+	
 }
 
 Slayer::~Slayer() {
@@ -34,6 +37,10 @@ void Slayer::OnUpdate(sf::Time interval) {
 			
 		}
 		return;
+	}
+	if (m_health < m_maxHealth) {
+		m_health += interval.asSeconds()*3;
+		UpdateHealthbar();
 	}
 	m_invulnTime-=interval.asSeconds();
 	auto window = m_scene->GetGame()->GetWindow();
@@ -144,10 +151,12 @@ void Slayer::Damage(float damage) {
 	m_health-=damage;
 	if (m_health < 0) {
 		if (!m_dead) {
+			static_cast<Level*>(m_scene)->ChangeScore(-m_maxHealth);
 			// TODO DEATHSOUND
 			m_dead=true;
 		}
 	} else {
+		static_cast<Level*>(m_scene)->ChangeScore(-damage);
 			// TODO HITSOUND
 	}
 	UpdateHealthbar();
@@ -157,13 +166,31 @@ void Slayer::ContactHandler::handle(b2Contact* contact, bool begin) {
 	if (!contact->IsEnabled()) return;
 	void* udA = contact->GetFixtureA()->GetBody()->GetUserData();
 	void* udB = contact->GetFixtureB()->GetBody()->GetUserData();
-	if ((udA == m_slayer && contact->GetFixtureA()->GetType() == b2Shape::e_circle) 
-		|| (udB == m_slayer  && contact->GetFixtureB()->GetType() == b2Shape::e_circle)) {
-		if (static_cast<engine::Node*>(udA == m_slayer?udB:udA)->GetType()==NT_ENEMY) return;
+	Node* other = nullptr;
+	if ((udA == m_slayer && (other = static_cast<Node*>(udB)) && contact->GetFixtureA()->GetType() == b2Shape::e_circle)
+		|| (udB == m_slayer  && (other = static_cast<Node*>(udA)) && contact->GetFixtureB()->GetType() == b2Shape::e_circle)) {
+		if (other->GetType()==NT_ENEMY) return;
 		if (begin){
 			m_count++;
 		} else {
 			m_count--;
+		}
+	}
+	// absolutely horrible code upcoming
+	if (other) {
+		// I warned you
+		// ..
+		// ...
+		// here it is:
+		if (other->GetIdentifier() == "upgrade_crossbow") {
+			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_CROSSBOW);
+			other->Delete();
+		}else if (other->GetIdentifier() == "upgrade_launcher") {
+			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_LAUNCHER);
+			other->Delete();
+		}else if (other->GetIdentifier() == "upgrade_suncannon") {
+			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_SUNCANNON);
+			other->Delete();
 		}
 	}
 }

@@ -3,6 +3,7 @@
     "size": [20, 20],
     "origin": "center",
     "hits": 1,
+    "damage": 15,
     "sprite": {
         "sheet": "assets/scripts/weapon_sheet.json",
         "animations": {

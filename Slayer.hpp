@@ -31,7 +31,6 @@ protected:
 	Node* m_weapon;
 	ContactHandler m_contactHandler;
 	float m_shootTime[WT_MAX];
-	float m_invulnTime;
 	float m_respawnTimer;
 public:
 	Slayer(engine::Scene* scene);

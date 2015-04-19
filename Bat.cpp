@@ -18,7 +18,6 @@ Bat::Bat(engine::Scene* scene): Damagable(scene), m_targetPoint(0,0) {
 Bat::~Bat() {
 }
 void Bat::OnUpdate(sf::Time interval) {
-	
 	Damagable::OnUpdate(interval);
 	Level* level = static_cast<Level*>(m_scene);
 	Slayer* slayer = level->GetSlayer();

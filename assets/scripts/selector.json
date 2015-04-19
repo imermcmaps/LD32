@@ -1,5 +1,6 @@
 {
     "type":"selector",
+    "identifier": "selector",
     "position": [30, 30],
     "children": [
         {

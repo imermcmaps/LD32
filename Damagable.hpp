@@ -20,7 +20,7 @@ protected:
 	bool m_dead;
 	bool m_hit;
 	ContactHandler m_preCH;
-	bool m_invulnerable;
+	float m_invulnTime;
 public:
 	Damagable(engine::Scene* scene);
 	virtual ~Damagable();

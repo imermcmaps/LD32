@@ -6,14 +6,17 @@
 
 Damagable::Damagable(engine::Scene* scene): SpriteNode(scene), m_health(10), 
 		m_maxHealth(10), m_dead(false), m_hit(false), m_preCH(this), m_damage(2),
-		m_invulnerable(false) {
+		m_invulnTime(0) {
 	m_scene->OnContactPreSolve.AddHandler(&m_preCH);
+	static_cast<Level*>(scene)->IncEnemies();
 }
 
 Damagable::~Damagable() {
 	m_scene->OnContactPreSolve.RemoveHandler(&m_preCH);
+	static_cast<Level*>(m_scene)->DecEnemies();
 }
 void Damagable::OnUpdate(sf::Time interval) {
+	m_invulnTime-=interval.asSeconds();
 	if (m_hit) {
 		m_hit=false;
 		engine::util::RandomFloat r(0, 1);
@@ -49,10 +52,13 @@ bool Damagable::initialize(Json::Value& root) {
 	return true;
 }
 void Damagable::Damage(float damage){
+	if (m_invulnTime > 0) return;
 	m_health-=damage;
-	if (damage > 0.1 || m_health < 0){
+	if (damage > 0.1 || m_health < 0) {
 		m_hit = true;
 	}
+	m_invulnTime = 0.1;
+	static_cast<Level*>(m_scene)->ChangeScore(damage/4);
 	UpdateHealthbar();
 }
 void Damagable::UpdateHealthbar() {

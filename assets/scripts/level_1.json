@@ -8,17 +8,40 @@
         "enabled": true,
         "ambient": [150, 150, 150]
     },
+    "next": "assets/scripts/level_1.json",
     "ui": [
         {
             "childData": "assets/scripts/selector.json"
         },
         {
             "childData": "assets/scripts/ui_paused.json"
+        },
+        {
+            "type": "text",
+            "position": [850, 20],
+            "identifier": "score",
+            "text": {
+                "font": "assets/lcd_solid.ttf",
+                "size": 20,
+                "text": "Score: 0"
+            }
+        },
+        {
+            "type": "text",
+            "position": [512, 260],
+            "identifier": "next",
+            "active": false,
+            "text": {
+                "align": "center",
+                "font": "assets/lcd_solid.ttf",
+                "size": 20,
+                "text": "You slayed all vampires! Press ENTER to proceed to the next level"
+            }
         }
     ],
     "children": [
         {
-            "type" : "sprite",
+            "type": "sprite",
             "size": [3000, 576],
             "sprite": {
                 "texture": "assets/images/level1.png"
@@ -29,48 +52,235 @@
             "body": {
                 "type": "static",
                 "shapes": [
-                    {"type":"edge", "points": [[0,0], [0,576]]},
-                    {"type":"edge", "points": [[0,576], [3000,576]]},
-                    {"type":"edge", "points": [[3000,576], [3000,0]]},
-                    {"type":"edge", "points": [[3000,0], [0,0]]}
+                    {
+                        "type": "edge",
+                        "points": [[0, 0], [0, 576]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[0, 576], [3000, 576]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[3000, 576], [3000, 0]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[3000, 0], [0, 0]]
+                    }
                 ]
             }
         },
         {
+            "children": [
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [607, 399]
+                },
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [832, 375]
+                },
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [1049, 358]
+                },
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [1258, 330]
+                },
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [1472, 323]
+                },
+                {
+                    "childData": "assets/scripts/dirt_platform.json",
+                    "position": [1696, 309]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [899, 340]
+                },
+                {
+                    "damage": 20,
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [1535, 369]
+                },
+                {
+                    "damage": 20,
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [1600, 334]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [361, 559]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [404, 559]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [404, 518.999755859375]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1763, 264]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1720, 264]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1763, 224]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1678, 264]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1759, 184]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1716, 183]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1729, 143]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1773, 143]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1754, 102]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1722, 223]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1636, 262]
+                },
+                {
+                    "identifier": "upgrade_crossbow",
+                    "childData": "assets/scripts/crate_upgrade.json",
+                    "position": [1658, 222]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1911, 546]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [285, 550]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1754, 64]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2202, 546]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2250, 545]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2302, 545]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2234, 505.00003051757812]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2276, 504.99990844726562]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2323, 503.99996948242187]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2347, 546]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2262, 465]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2308, 466]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2397, 545]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2372, 505.00003051757812]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2441, 546]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2420, 505.00003051757812]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2395, 469]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2415, 193]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2324, 44]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2748, 299]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2856, 93]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2897, 408]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2593, 191]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [1673.4351806640625, 525.60009765625]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [2514.715576171875, 525.60009765625]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [2725.84765625, 454.24392700195312]
+                }
+            ]
+        },
+        {
             "position": [100, 100],
             "childData": "assets/scripts/slayer.json"
-        },
-        {
-            "position": [200, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [300, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [400, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [500, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [600, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [700, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [800, 100],
-            "childData": "assets/scripts/enemy_bat.json"
-        },
-        {
-            "position": [900, 100],
-            "childData": "assets/scripts/enemy_bat.json"
         }
     ]
 }

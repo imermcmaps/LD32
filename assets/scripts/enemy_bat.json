@@ -3,6 +3,7 @@
     "health": 50,
     "size" : [84, 28],
     "origin": "center",
+    "damage": 20,
     "sprite": {
         "sheet" : {
             "texture" : "assets/images/bat.png",

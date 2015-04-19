@@ -19,6 +19,7 @@ set(SOURCE_FILES main.cpp
     Projectile.cpp
     Damagable.cpp
     Bat.cpp
+    Vampire.cpp
 )
 add_executable(LD32 ${SOURCE_FILES})
 
