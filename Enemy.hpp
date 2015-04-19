@@ -4,6 +4,15 @@
 
 #include "misc.hpp"
 class Enemy: public engine::SpriteNode {
+	class ContactHandler: public engine::util::EventHandler<b2Contact*, const b2Manifold*> {
+		Enemy* m_enemy;
+	public:
+		ContactHandler(Enemy* p) : m_enemy(p) {
+			
+		}
+		virtual void handle(b2Contact*, const b2Manifold* manifold);
+
+	};
 protected:
 	float m_health;
 	bool m_dead;

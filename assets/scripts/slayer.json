@@ -11,8 +11,8 @@
         "category": 4,
         "mask": 4,
         "shapes": [
-            {"type":"box", "width": 30, "height": 90, "category": 2, "mask": 12},
-            {"type":"circle", "radius": 15, "y":43, "category": 2, "mask": 12}
+            {"type":"box", "width": 30, "height": 90, "category": 2, "mask": 28},
+            {"type":"circle", "radius": 15, "y":43, "category": 2, "mask": 28}
         ]
     },
     "sprite": {
@@ -57,6 +57,56 @@
                     }
                 }
             }
-        }
+        },
+        {
+            "type":"sprite",
+            "identifier": "launcher",
+            "origin": "center",
+            "render": false,
+            "size": [68, 22],
+            "position": [35, 55],
+            "sprite": {
+                "sheet": "assets/scripts/weapon_sheet.json",
+                "animations": {
+                    "default": {
+                        "frames": [5]
+                    },
+                    "fire": {
+                        "frames": [6],
+                        "speed": 0.1,
+                        "loop": false
+                    }
+                }
+            }
+        },
+        {
+            "type":"sprite",
+            "identifier": "suncannon",
+            "origin": "center",
+            "render": false,
+            "size": [36, 32],
+            "position": [35, 55],
+            "sprite": {
+                "sheet": "assets/scripts/weapon_sheet.json",
+                "animations": {
+                    "default": {
+                        "frames": [10]
+                    },
+                    "fire": {
+                        "frames": [10],
+                        "speed": 0.1,
+                        "loop": false
+                    }
+                }
+            },
+            "children": [
+                {
+                    "origin":"center",
+                    "type":"light",
+                    "radius": 60,
+                    "color": [128, 102, 0]
+                }
+            ]
+       }
     ]
 }

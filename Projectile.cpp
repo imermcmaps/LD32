@@ -4,7 +4,7 @@
 #include "Engine/Scene.hpp"
 
 Projectile::Projectile(engine::Scene* scene): SpriteNode(scene), m_hits(-1), 
-		m_damage(4), m_contactHandler(this), m_dead(false) {
+		m_damage(4), m_contactHandler(this), m_dead(false), m_enemyHitsOnly(false) {
 	m_scene->OnContact.AddHandler(&m_contactHandler);
 }
 
@@ -13,7 +13,7 @@ Projectile::~Projectile() {
 }
 
 void Projectile::Hit(engine::Node* node) {
-	if (!m_hit) {
+	if (!m_hit && (!m_enemyHitsOnly || node->GetType() == NT_ENEMY)) {
 		m_hits--;
 		m_hit=true;
 		PlayAnimation("hit", "default");
@@ -31,6 +31,7 @@ bool Projectile::initialize(Json::Value& root) {
 	}
 	m_damage = root.get("damage", 4).asFloat();
 	m_hits = root.get("hits", -1).asInt();
+	m_enemyHitsOnly = root.get("enemyHitsOnly", false).asBool();
 	auto it = m_animations.find("end");
 	if (it != m_animations.end()) {
 		it->second->OnOver = [this](){

@@ -35,7 +35,13 @@
         "bullet": true,
         "type":"dynamic",
         "shapes": [
-            {"type":"box", "width": 60, "height": 25, "category":8, "mask": 8}
+            {"type":"box", "width": 60, "height": 25, "category":8, "mask": 24}
         ]
-    }
+    },
+    "children": [
+        {
+            "position": [42, -5],
+            "childData": "assets/scripts/healthbar.json"
+        }
+    ]
 }

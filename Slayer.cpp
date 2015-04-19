@@ -7,8 +7,8 @@
 #include <iostream>
 #include <Engine/util/misc.hpp>
 Slayer::Slayer(engine::Scene* scene): SpriteNode(scene), m_maxVelocity(20, 1), 
-		m_velocityIncrease(5, 5), m_contactHandler(this), m_state(STANDING), 
-		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime(0.0f) {
+		m_velocityIncrease(6, 10), m_contactHandler(this), m_state(STANDING), 
+		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{} {
 	m_scene->OnContact.AddHandler(&m_contactHandler);
 	static_cast<Level*>(scene)->SetSlayer(this);
 }
@@ -60,12 +60,16 @@ void Slayer::OnUpdate(sf::Time interval) {
 		float rangle = angle;
 		angle *= 180 / engine::util::fPI;
 		SetFlipped(angle > 90 || angle < -90);
+		if (weapons[m_weaponType].flip) {
+			static_cast<engine::SpriteNode*>(m_weapon)->SetVFlipped(angle > 90 || angle < -90);
+			//m_weapon->SetRotation(angle>90?angle-180:(angle< -90?angle+180:angle));
+		}
 		m_weapon->SetRotation(angle);
 		
 		// Shooting
-		m_shootTime -= interval.asSeconds();
-		if (m_shootTime < 0 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))) {
-			m_shootTime = weapons[m_weaponType].shootDelay;
+		m_shootTime[m_weaponType] -= interval.asSeconds();
+		if (m_shootTime[m_weaponType] < 0 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))) {
+			m_shootTime[m_weaponType] = weapons[m_weaponType].shootDelay;
 			auto projectile = engine::Factory::CreateChildFromFile(weapons[m_weaponType].projectileFile, m_scene);
 			auto pos = GetGlobalPosition();
 			projectile->SetPosition(pos.x, pos.y);

@@ -1,0 +1,47 @@
+{
+    "type": "projectile",
+    "size": [28, 28],
+    "origin": "center",
+    "hits": 3,
+    "enemyHitsOnly": true,
+    "despawn": 20,
+    "transparent": true,
+    "identifier": "sun",
+    "sprite": {
+        "sheet": "assets/scripts/weapon_sheet.json",
+        "animations": {
+            "default": {
+                "frames": [11, 12, 13, 14],
+                "speed": 0.2,
+                "loop": true
+            },
+            "end": {
+                "frames": [11],
+                "speed": 0.02,
+                "loop": false
+            },
+            "hit": {
+                "frames": [11],
+                "speed": 0.02,
+                "loop": false
+            }
+        }
+    },
+    "body": {
+        "type": "dynamic",
+        "bullet": true,
+        "linearVelocity": [100, 100],
+        "linearDamping": 0,
+        "gravityScale": 0,
+        "shapes": [
+            {"type":"circle", "density":1, "restitution": 0.8, "radius": 24, "category": 4, "mask": 18}
+        ]
+    }, 
+    "children": [
+        {
+            "type":"light",
+            "radius": 300,
+            "color": [255, 205, 0]
+        }
+    ]
+}

@@ -23,7 +23,6 @@ protected:
 	enum State {
 		STANDING,
 		RUNNING,
-		ATTACKING,
 	};
 	sf::Vector2f m_velocityIncrease;
 	sf::Vector2f m_maxVelocity;
@@ -32,7 +31,7 @@ protected:
 	State m_state;
 	Node* m_weapon;
 	ContactHandler m_contactHandler;
-	float m_shootTime;
+	float m_shootTime[WT_MAX];
 public:
 	Slayer(engine::Scene* scene);
 	virtual ~Slayer();

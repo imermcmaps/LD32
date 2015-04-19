@@ -43,6 +43,60 @@
                     }
 		}
             ]
+        },
+        {
+            "position": [100, 0],
+            "identifier": "launcher",
+            "childData": "assets/scripts/selector_item.json",
+            "children": [
+                {
+                    "type":"sprite",
+                    "size": [30, 11],
+                    "position": [20, 20],
+                    "rotation": -45,
+                    "origin": "center",
+                    "sprite": {
+                        "sheet" : "assets/scripts/weapon_sheet.json",
+                        "index": 5
+                    }
+                },
+                {
+                    "type": "text",
+                    "position": [5,20],
+                    "text": {
+                        "font": "assets/lcd_solid.ttf",
+                        "size": 15, 
+                        "text": "3"
+                    }
+		}
+            ]
+        },
+        {
+            "position": [150, 0],
+            "identifier": "suncannon",
+            "childData": "assets/scripts/selector_item.json",
+            "children": [
+                {
+                    "type":"sprite",
+                    "size": [18, 16],
+                    "position": [20, 20],
+                    "rotation": -45,
+                    "origin": "center",
+                    "sprite": {
+                        "sheet" : "assets/scripts/weapon_sheet.json",
+                        "index": 10
+                    }
+                },
+                {
+                    "type": "text",
+                    "position": [5,20],
+                    "text": {
+                        "font": "assets/lcd_solid.ttf",
+                        "size": 15, 
+                        "text": "4"
+                    }
+		}
+            ]
         }
         
     ]

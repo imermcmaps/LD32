@@ -1,0 +1,12 @@
+{
+    "texture": "assets/images/misc.png",
+    "sprites": [
+        {"left":0, "top": 0, "width": 20, "height": 9, "_comment":"0_platform_small"},
+        {"left":20, "top": 0, "width": 40, "height": 10, "_comment": "1_platform_big"},
+        {"left":0, "top": 9, "width": 7, "height": 12, "_comment": "2_lantern"},
+        {"left":7, "top": 9, "width": 7, "height": 12},
+        {"left":14, "top": 9, "width": 7, "height": 12},
+        {"left":21, "top": 10, "width": 10, "height": 10, "_comment": "5_crate"},
+        {"left":31, "top": 10, "width": 10, "height": 10, "_comment": "6_crate_dark"}
+    ]
+}

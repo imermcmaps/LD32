@@ -1,0 +1,21 @@
+{
+    "type":"sprite",
+    "identifier": "healthbar",
+    "size": [44, 8],
+    "origin": "bottom-center",
+    "sprite": {
+        "sheet": "assets/scripts/ui_sheet.json",
+        "index":4
+    },
+    "children": [
+        {
+            "type":"sprite",
+            "identifier": "health",
+            "size": [44, 8],
+            "sprite": {
+                "sheet": "assets/scripts/ui_sheet.json",
+                "index":5
+            }
+        }
+    ]
+}

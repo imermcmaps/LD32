@@ -1,23 +1,24 @@
 {
     "type": "projectile",
-    "size": [22, 15],
+    "size": [20, 20],
     "origin": "center",
     "hits": 1,
     "sprite": {
         "sheet": "assets/scripts/weapon_sheet.json",
         "animations": {
             "default": {
-                "frames": [4],
+                "frames": [7],
                 "speed": 10,
                 "loop": false
             },
             "end": {
-                "frames": [4],
-                "speed": 0.3,
+                "frames": [8, 9],
+                "speed": 0.02,
                 "loop": false
             },
             "hit": {
-                "frames": [4],
+                "frames": [8, 9],
+                "speed": 0.02,
                 "loop": false
             }
         }
@@ -25,11 +26,10 @@
     "body": {
         "type": "dynamic",
         "bullet": true,
-        "linearVelocity": [500, 500],
+        "linearVelocity": [800, 800],
         "linearDamping": 0,
         "shapes": [
-            {"type":"box", "density":20, "width":22, "height": 6, "category": 4, "mask": 18},
-            {"type":"box", "density":20, "x": 2, "width":6, "height": 15, "category": 4, "mask": 18}
+            {"type":"circle", "density":20, "radius": 20, "category": 4, "mask": 18}
         ]
     }
 }

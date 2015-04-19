@@ -35,8 +35,8 @@
                 "type": "circle",
                 "radius": 1,
                 "density": 1,
-                "category": 4,
-                "mask": 12
+                "category": 16,
+                "mask": 28
             }
         ]
     }

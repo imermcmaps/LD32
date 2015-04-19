@@ -44,6 +44,12 @@ void WeaponSelector::KeyListener::handle(const sf::Event::KeyEvent& e) {
 		case sf::Keyboard::Num2:
 			m_selector->Select(WT_CROSSBOW);
 			break;
+		case sf::Keyboard::Num3:
+			m_selector->Select(WT_LAUNCHER);
+			break;
+		case sf::Keyboard::Num4:
+			m_selector->Select(WT_SUNCANNON);
+			break;
 		
 	}
 }

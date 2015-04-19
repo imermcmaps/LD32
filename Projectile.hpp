@@ -20,6 +20,7 @@ protected:
 	float m_damage;
 	ContactHandler m_contactHandler;
 	bool m_dead;
+	bool m_enemyHitsOnly;
 public:
 	Projectile(engine::Scene* scene);
 	virtual ~Projectile();

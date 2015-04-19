@@ -5,12 +5,15 @@
 enum WeaponType {
 	WT_NONE,
 	WT_CROSSBOW,
+	WT_LAUNCHER,
+	WT_SUNCANNON,
 	WT_MAX
 };
 struct Weapon {
 	const char* name;
 	float shootDelay;
 	const char* projectileFile;
+	bool flip;
 };
 extern const Weapon weapons[WT_MAX];
 

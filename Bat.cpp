@@ -24,16 +24,16 @@ void Bat::OnUpdate(sf::Time interval) {
 	m_targetTime-=interval.asSeconds();
 	if (m_targetTime <= 0) {
 		engine::util::RandomFloat r(0, 1);
-		m_targetTime = 0.4f * (r()+1);
+		m_targetTime = static_cast<float>(0.4f * (r()+1));
 		m_targetPoint = (slayer->GetGlobalPosition());
 		if (r() > 0.4) {
-			m_targetPoint.y -= slayer->GetSize().y*(r()+0.5f);
+			m_targetPoint.y -= static_cast<float>(slayer->GetSize().y*(r()+0.5f));
 		}
 		if (r() > 0.4) {
-			m_targetPoint.x -= slayer->GetSize().x*5*(r()+0.5f);
+			m_targetPoint.x -= static_cast<float>(slayer->GetSize().x*5*(r()+0.5f));
 		}
 		if (r() > 0.4) {
-			m_targetPoint.x += slayer->GetSize().x*5*(r()+0.5f);
+			m_targetPoint.x += static_cast<float>(slayer->GetSize().x*5*(r()+0.5f));
 		}
 	}
 	auto delta = m_targetPoint-GetGlobalPosition();

@@ -30,7 +30,8 @@
                 "shapes": [
                     {"type":"edge", "points": [[0,0], [0,576]]},
                     {"type":"edge", "points": [[0,576], [3000,576]]},
-                    {"type":"edge", "points": [[3000,576], [3000,0]]}
+                    {"type":"edge", "points": [[3000,576], [3000,0]]},
+                    {"type":"edge", "points": [[3000,0], [0,0]]}
                 ]
             }
         },
