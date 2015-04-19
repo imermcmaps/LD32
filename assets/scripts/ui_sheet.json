@@ -6,6 +6,6 @@
         {"left":20, "top":0, "width":10, "height": 10},
         {"left":0, "top":10, "width":25, "height": 18},
         {"left":0, "top":28, "width":22, "height": 4, "_comment":"5_health"},
-        {"left":0, "top":32, "width":22, "height": 4}
+        {"left":1, "top":32, "width":20, "height": 4}
     ]
 }

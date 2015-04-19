@@ -1,7 +1,7 @@
 #ifndef LD32_BAT_HPP
 #define	LD32_BAT_HPP
-#include "Enemy.hpp"
-class Bat: public Enemy {
+#include "Damagable.hpp"
+class Bat: public Damagable {
 protected:
 	sf::Vector2f m_targetPoint;
 	float m_targetTime;

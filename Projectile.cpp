@@ -1,6 +1,6 @@
 #include "Projectile.hpp"
 #include "misc.hpp"
-#include "Enemy.hpp"
+#include "Damagable.hpp"
 #include "Engine/Scene.hpp"
 
 Projectile::Projectile(engine::Scene* scene): SpriteNode(scene), m_hits(-1), 
@@ -21,7 +21,7 @@ void Projectile::Hit(engine::Node* node) {
 	if (node->GetType() != NT_ENEMY) {
 		return;
 	}
-	Enemy* enemy = static_cast<Enemy*>(node);
+	Damagable* enemy = static_cast<Damagable*>(node);
 	enemy->Damage(m_damage);
 }
 

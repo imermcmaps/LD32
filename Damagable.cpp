@@ -1,22 +1,19 @@
-/* 
- * File:   Enemy.cpp
- * Author: iMer
- * 
- * Created on 18. April 2015, 18:35
- */
-
-#include "Enemy.hpp"
+#include "Damagable.hpp"
 #include "Engine/util/Random.hpp"
 #include "Engine/Factory.hpp"
 #include "Level.hpp"
 #include "Slayer.hpp"
 
-Enemy::Enemy(engine::Scene* scene): SpriteNode(scene), m_health(10), m_dead(false), m_hit(false) {
+Damagable::Damagable(engine::Scene* scene): SpriteNode(scene), m_health(10), 
+		m_maxHealth(10), m_dead(false), m_hit(false), m_preCH(this), m_damage(2),
+		m_invulnerable(false) {
+	m_scene->OnContactPreSolve.AddHandler(&m_preCH);
 }
 
-Enemy::~Enemy() {
+Damagable::~Damagable() {
+	m_scene->OnContactPreSolve.RemoveHandler(&m_preCH);
 }
-void Enemy::OnUpdate(sf::Time interval) {
+void Damagable::OnUpdate(sf::Time interval) {
 	if (m_hit) {
 		m_hit=false;
 		engine::util::RandomFloat r(0, 1);
@@ -43,20 +40,37 @@ void Enemy::OnUpdate(sf::Time interval) {
 		}
 	}
 }
-bool Enemy::initialize(Json::Value& root) {
+bool Damagable::initialize(Json::Value& root) {
 	if (!engine::SpriteNode::initialize(root)) {
 		return false;
 	}
-	m_health = root.get("health", 10.0f).asFloat();
+	m_health = m_maxHealth = root.get("health", 10.0f).asFloat();
+	m_damage = root.get("damage", 2.0f).asFloat();
 	return true;
 }
-void Enemy::Damage(float damage){
+void Damagable::Damage(float damage){
 	m_health-=damage;
 	if (damage > 0.1 || m_health < 0){
 		m_hit = true;
 	}
+	UpdateHealthbar();
 }
-void Enemy::ContactHandler::handle(b2Contact* c, const b2Manifold* manifold) {
+void Damagable::UpdateHealthbar() {
+	auto healthbar = GetChildByID("healthbar");
+	if (healthbar) {
+		auto health = healthbar->GetChildByID("health");
+		if (m_health < 0 ){
+			healthbar->SetActive(false);
+		} else {
+			auto orig = healthbar->GetSize();
+			float ratio = m_health/m_maxHealth;
+			orig.x = (orig.x -4)*ratio;
+			health->SetSize(orig);
+		}
+	}
+}
+
+void Damagable::ContactHandler::handle(b2Contact* c, const b2Manifold* manifold) {
 	void* udA = c->GetFixtureA()->GetBody()->GetUserData();
 	void* udB = c->GetFixtureB()->GetBody()->GetUserData();
 	Slayer* slayer = nullptr;
@@ -66,7 +80,7 @@ void Enemy::ContactHandler::handle(b2Contact* c, const b2Manifold* manifold) {
 		slayer = static_cast<Slayer*>(udA);
 	}
 	if (slayer) {
-//		slayer->Damage(m_enemy);
+		slayer->Damage(m_enemy->GetDamage());
 		c->SetEnabled(false);
 	}
 }

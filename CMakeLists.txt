@@ -17,7 +17,7 @@ set(SOURCE_FILES main.cpp
     WeaponSelector.cpp
     misc.cpp
     Projectile.cpp
-    Enemy.cpp
+    Damagable.cpp
     Bat.cpp
 )
 add_executable(LD32 ${SOURCE_FILES})

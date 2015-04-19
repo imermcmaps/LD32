@@ -3,6 +3,7 @@
     "size": [44, 116],
     "_spritesize": [22, 58],
     "origin":"center",
+    "health":100,
     "body": {
         "fixedRotation": true,
         "linearDamping": 2,
@@ -11,8 +12,8 @@
         "category": 4,
         "mask": 4,
         "shapes": [
-            {"type":"box", "width": 30, "height": 90, "category": 2, "mask": 28},
-            {"type":"circle", "radius": 15, "y":43, "category": 2, "mask": 28}
+            {"type":"box", "width": 30, "height": 90, "category": 2, "mask": 20},
+            {"type":"circle", "radius": 15, "y":43, "category": 2, "mask": 20}
         ]
     },
     "sprite": {
@@ -107,6 +108,10 @@
                     "color": [128, 102, 0]
                 }
             ]
-       }
+       },
+        {
+            "position": [22, -10],
+            "childData": "assets/scripts/healthbar.json"
+        }
     ]
 }

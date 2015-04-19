@@ -3,11 +3,11 @@
 #include <Engine/SpriteNode.hpp>
 
 #include "misc.hpp"
-class Enemy: public engine::SpriteNode {
+class Damagable: public engine::SpriteNode {
 	class ContactHandler: public engine::util::EventHandler<b2Contact*, const b2Manifold*> {
-		Enemy* m_enemy;
+		Damagable* m_enemy;
 	public:
-		ContactHandler(Enemy* p) : m_enemy(p) {
+		ContactHandler(Damagable* p) : m_enemy(p) {
 			
 		}
 		virtual void handle(b2Contact*, const b2Manifold* manifold);
@@ -15,20 +15,32 @@ class Enemy: public engine::SpriteNode {
 	};
 protected:
 	float m_health;
+	float m_maxHealth;
+	float m_damage;
 	bool m_dead;
 	bool m_hit;
+	ContactHandler m_preCH;
+	bool m_invulnerable;
 public:
-	Enemy(engine::Scene* scene);
-	virtual ~Enemy();
+	Damagable(engine::Scene* scene);
+	virtual ~Damagable();
 
 	virtual uint8_t GetType() const {
 		return NT_ENEMY;
 	}
-	void Damage(float damage);
+	virtual void Damage(float damage);
 	virtual void OnUpdate(sf::Time interval);
 
 	virtual bool initialize(Json::Value& root);
 
+    void SetDamage(float damage) {
+    	m_damage = damage;
+    }
+
+    float GetDamage() const {
+    	return m_damage;
+    }
+	void UpdateHealthbar();
 
 private:
 

@@ -1,6 +1,6 @@
 {
     "type" :"bat", 
-    "health": 5,
+    "health": 50,
     "size" : [84, 28],
     "origin": "center",
     "sprite": {

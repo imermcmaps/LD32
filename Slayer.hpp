@@ -1,12 +1,11 @@
 #ifndef SLAYER_HPP
 #define	SLAYER_HPP
 
-#include <Engine/SpriteNode.hpp>
-
+#include "Damagable.hpp"
 #include "misc.hpp"
 
 
-class Slayer: public engine::SpriteNode {
+class Slayer: public Damagable {
 	class ContactHandler: public engine::util::EventHandler<b2Contact*, bool> {
 	protected:
 		Slayer* m_slayer;
@@ -32,6 +31,8 @@ protected:
 	Node* m_weapon;
 	ContactHandler m_contactHandler;
 	float m_shootTime[WT_MAX];
+	float m_invulnTime;
+	float m_respawnTimer;
 public:
 	Slayer(engine::Scene* scene);
 	virtual ~Slayer();
@@ -41,7 +42,7 @@ public:
 	void PlayAni(std::string after="");
 
 	virtual void SetFlipped(bool flipped);
-
+	virtual void Damage(float damage);
 	
 protected:
 	virtual void OnUpdate(sf::Time interval);

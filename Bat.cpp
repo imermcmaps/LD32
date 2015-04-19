@@ -11,14 +11,15 @@
 #include "Engine/util/Random.hpp"
 #include <iostream>
 
-Bat::Bat(engine::Scene* scene): Enemy(scene), m_targetPoint(0,0) {
+Bat::Bat(engine::Scene* scene): Damagable(scene), m_targetPoint(0,0) {
 	
 }
 
 Bat::~Bat() {
 }
 void Bat::OnUpdate(sf::Time interval) {
-	Enemy::OnUpdate(interval);
+	
+	Damagable::OnUpdate(interval);
 	Level* level = static_cast<Level*>(m_scene);
 	Slayer* slayer = level->GetSlayer();
 	m_targetTime-=interval.asSeconds();

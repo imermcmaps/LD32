@@ -8,6 +8,7 @@ protected:
 	Slayer* m_slayer;
 	bool m_initialized;
 	bool m_paused;
+	sf::Vector2f m_respawnPoint;
 public:
 	Level(LD32* game);
 	virtual ~Level();
@@ -19,6 +20,8 @@ public:
     Slayer* GetSlayer() const {
     	return m_slayer;
     }
+	void Respawn();
+	virtual bool initialize(Json::Value& root);
 protected:
 	virtual void update(sf::Time interval);
 };

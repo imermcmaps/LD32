@@ -6,18 +6,36 @@
 #include <Engine/Game.hpp>
 #include <iostream>
 #include <Engine/util/misc.hpp>
-Slayer::Slayer(engine::Scene* scene): SpriteNode(scene), m_maxVelocity(20, 1), 
+#include <limits>
+Slayer::Slayer(engine::Scene* scene): Damagable(scene), m_maxVelocity(20, 1), 
 		m_velocityIncrease(6, 10), m_contactHandler(this), m_state(STANDING), 
-		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{} {
+		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{}, m_invulnTime(0),
+		m_respawnTimer(10.0f) {
 	m_scene->OnContact.AddHandler(&m_contactHandler);
 	static_cast<Level*>(scene)->SetSlayer(this);
+	// Remove damagable enemy hit handler
+	m_scene->OnContactPreSolve.RemoveHandler(&m_preCH);
+	m_health = m_maxHealth = 100;
 }
 
 Slayer::~Slayer() {
 	m_scene->OnContact.RemoveHandler(&m_contactHandler);
+	// Add it back in so it can be properly removed by damagable destructor
+	m_scene->OnContactPreSolve.AddHandler(&m_preCH);
 }
 
 void Slayer::OnUpdate(sf::Time interval) {
+	if (m_dead) {
+		m_respawnTimer-=interval.asSeconds();
+		if (m_respawnTimer <= 0) {
+			// Do this only once
+			m_respawnTimer = std::numeric_limits<float>::infinity();
+			static_cast<Level*>(m_scene)->Respawn();
+			
+		}
+		return;
+	}
+	m_invulnTime-=interval.asSeconds();
 	auto window = m_scene->GetGame()->GetWindow();
     sf::View v = window->getView();
 	auto pos = GetGlobalPosition();
@@ -49,7 +67,7 @@ void Slayer::OnUpdate(sf::Time interval) {
 			m_state = RUNNING;
 			PlayAni();
 		}
-	} else if (m_state != STANDING && m_state != ATTACKING) {
+	} else if (m_state != STANDING) {
 		m_state = STANDING;
 		PlayAni();
 	}
@@ -120,13 +138,28 @@ void Slayer::SetFlipped(bool flipped) {
 		(*it)->SetPosition(size.x-pos.x, pos.y);
 	}
 }
+void Slayer::Damage(float damage) {
+	if (damage <= 0 || m_invulnTime > 0) return;
+	m_invulnTime = 0.5;
+	m_health-=damage;
+	if (m_health < 0) {
+		if (!m_dead) {
+			// TODO DEATHSOUND
+			m_dead=true;
+		}
+	} else {
+			// TODO HITSOUND
+	}
+	UpdateHealthbar();
+}
 
 void Slayer::ContactHandler::handle(b2Contact* contact, bool begin) {
+	if (!contact->IsEnabled()) return;
 	void* udA = contact->GetFixtureA()->GetBody()->GetUserData();
 	void* udB = contact->GetFixtureB()->GetBody()->GetUserData();
 	if ((udA == m_slayer && contact->GetFixtureA()->GetType() == b2Shape::e_circle) 
 		|| (udB == m_slayer  && contact->GetFixtureB()->GetType() == b2Shape::e_circle)) {
-		
+		if (static_cast<engine::Node*>(udA == m_slayer?udB:udA)->GetType()==NT_ENEMY) return;
 		if (begin){
 			m_count++;
 		} else {

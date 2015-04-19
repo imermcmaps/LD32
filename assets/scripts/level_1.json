@@ -2,6 +2,7 @@
     "size": [3000, 576],
     "pixelToMeter": 60.0,
     "gravity": [0, 5],
+    "respawn": [100, 100],
     "debug": false,
     "light": {
         "enabled": true,

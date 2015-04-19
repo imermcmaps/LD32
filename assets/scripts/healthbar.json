@@ -11,7 +11,8 @@
         {
             "type":"sprite",
             "identifier": "health",
-            "size": [44, 8],
+            "size": [40, 8],
+            "position": [2, 0],
             "sprite": {
                 "sheet": "assets/scripts/ui_sheet.json",
                 "index":5
