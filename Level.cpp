@@ -68,4 +68,5 @@ bool Level::initialize(Json::Value& root) {
 	if (!engine::Scene::initialize(root)) return false;
 	m_respawnPoint = sf::Vector2f(root["respawn"].get(0u, 100.0f).asFloat(), root["respawn"].get(1u, 100.0f).asFloat()); 
 	m_next = root.get("next", "").asString(); 
+	return true;
 }

@@ -3,6 +3,7 @@
 
 #include "Damagable.hpp"
 #include "misc.hpp"
+#include "Engine/include/Engine/ResourceManager.hpp"
 
 
 class Slayer: public Damagable {
@@ -10,8 +11,11 @@ class Slayer: public Damagable {
 	protected:
 		Slayer* m_slayer;
 		size_t m_count;
+		sf::Sound* m_upgradeSound;
 	public:
-		ContactHandler(Slayer* slayer): m_slayer(slayer), m_count(0) {}
+		ContactHandler(Slayer* slayer): m_slayer(slayer), m_count(0) {
+			m_upgradeSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/upgrade.wav");
+		}
 		void handle(b2Contact*, bool);
 
         size_t GetCount() const {
@@ -32,6 +36,8 @@ protected:
 	ContactHandler m_contactHandler;
 	float m_shootTime[WT_MAX];
 	float m_respawnTimer;
+
+	sf::Sound* m_shootSound[WT_MAX];
 public:
 	Slayer(engine::Scene* scene);
 	virtual ~Slayer();

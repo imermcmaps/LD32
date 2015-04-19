@@ -12,7 +12,8 @@
 #include <iostream>
 
 Bat::Bat(engine::Scene* scene): Damagable(scene), m_targetPoint(0,0) {
-	
+	m_deathSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/bat_death.wav");
+	m_hurtSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/bat_hurt.wav");
 }
 
 Bat::~Bat() {
@@ -38,7 +39,7 @@ void Bat::OnUpdate(sf::Time interval) {
 	}
 	auto delta = m_targetPoint-GetGlobalPosition();
 	float dist = sqrtf(delta.x*delta.x+delta.y*delta.y);
-	if (dist < 700) {
+	if (dist < 700 && abs(delta.y) < 300) {
 		float angle = atan2(delta.y, delta.x);
 
 		const float v = 3 * interval.asSeconds() ;

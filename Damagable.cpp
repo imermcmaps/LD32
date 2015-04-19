@@ -54,8 +54,14 @@ bool Damagable::initialize(Json::Value& root) {
 void Damagable::Damage(float damage){
 	if (m_invulnTime > 0) return;
 	m_health-=damage;
+	
 	if (damage > 0.1 || m_health < 0) {
 		m_hit = true;
+	}
+	if (m_health < 0 && !m_dead) {
+		m_deathSound->play();
+	} else {
+		m_hurtSound->play();
 	}
 	m_invulnTime = 0.1;
 	static_cast<Level*>(m_scene)->ChangeScore(damage/4);

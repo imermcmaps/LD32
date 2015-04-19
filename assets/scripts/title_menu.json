@@ -18,6 +18,42 @@
             },
             {
                 "childData": "assets/scripts/logo.json"
+            },
+            {
+                "type": "text",
+                "position": [20, 200],
+                "text": {
+                    "font": "assets/lcd_solid.ttf",
+                    "size": 20,
+                    "text": "WASD/arrow keys to move"
+                }
+            },
+            {
+                "type": "text",
+                "position": [20, 240],
+                "text": {
+                    "font": "assets/lcd_solid.ttf",
+                    "size": 20,
+                    "text": "Mouse to aim"
+                }
+            },
+            {
+                "type": "text",
+                "position": [20, 280],
+                "text": {
+                    "font": "assets/lcd_solid.ttf",
+                    "size": 20,
+                    "text": "Space/LeftClick to fire"
+                }
+            },
+            {
+                "type": "text",
+                "position": [20, 320],
+                "text": {
+                    "font": "assets/lcd_solid.ttf",
+                    "size": 20,
+                    "text": "1-4 to select weapon"
+                }
             }
         ]
 }

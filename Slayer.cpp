@@ -3,6 +3,7 @@
 #include "Level.hpp"
 #include "LD32.hpp"
 #include "Engine/Factory.hpp"
+#include "Engine/ResourceManager.hpp"
 #include <SFML/Window.hpp>
 #include <Engine/Game.hpp>
 #include <iostream>
@@ -11,17 +12,22 @@
 Slayer::Slayer(engine::Scene* scene): Damagable(scene), m_maxVelocity(20, 1), 
 		m_velocityIncrease(6, 10), m_contactHandler(this), m_state(STANDING), 
 		m_weaponType(WT_NONE), m_weapon(nullptr), m_shootTime{},
-		m_respawnTimer(10.0f) {
+		m_respawnTimer(10.0f), m_jumpCooldown(0) {
 	m_scene->OnContact.AddHandler(&m_contactHandler);
 	static_cast<Level*>(scene)->SetSlayer(this);
 	static_cast<Level*>(scene)->DecEnemies();
 	// Remove damagable enemy hit handler
 	m_scene->OnContactPreSolve.RemoveHandler(&m_preCH);
 	m_health = m_maxHealth = 100;
-	
+	m_deathSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/death.wav");
+	m_hurtSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/hurt.wav");
+	m_shootSound[WT_CROSSBOW]  = engine::ResourceManager::instance()->MakeSound("assets/sounds/crossbow_shoot.wav");
+	m_shootSound[WT_LAUNCHER]  = engine::ResourceManager::instance()->MakeSound("assets/sounds/launcher_shoot.wav");
+	m_shootSound[WT_SUNCANNON]  = engine::ResourceManager::instance()->MakeSound("assets/sounds/suncannon_shoot.wav");
 }
 
 Slayer::~Slayer() {
+	static_cast<Level*>(m_scene)->IncEnemies();
 	m_scene->OnContact.RemoveHandler(&m_contactHandler);
 	// Add it back in so it can be properly removed by damagable destructor
 	m_scene->OnContactPreSolve.AddHandler(&m_preCH);
@@ -94,6 +100,7 @@ void Slayer::OnUpdate(sf::Time interval) {
 		// Shooting
 		m_shootTime[m_weaponType] -= interval.asSeconds();
 		if (m_shootTime[m_weaponType] < 0 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))) {
+			m_shootSound[m_weaponType]->play();
 			m_shootTime[m_weaponType] = weapons[m_weaponType].shootDelay;
 			auto projectile = engine::Factory::CreateChildFromFile(weapons[m_weaponType].projectileFile, m_scene);
 			auto pos = GetGlobalPosition();
@@ -152,12 +159,13 @@ void Slayer::Damage(float damage) {
 	if (m_health < 0) {
 		if (!m_dead) {
 			static_cast<Level*>(m_scene)->ChangeScore(-m_maxHealth);
-			// TODO DEATHSOUND
+			m_deathSound->play();
+			PlayAnimation("death");
 			m_dead=true;
 		}
 	} else {
 		static_cast<Level*>(m_scene)->ChangeScore(-damage);
-			// TODO HITSOUND
+		m_hurtSound->play();
 	}
 	UpdateHealthbar();
 }
@@ -185,12 +193,15 @@ void Slayer::ContactHandler::handle(b2Contact* contact, bool begin) {
 		if (other->GetIdentifier() == "upgrade_crossbow") {
 			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_CROSSBOW);
 			other->Delete();
+			m_upgradeSound->play();
 		}else if (other->GetIdentifier() == "upgrade_launcher") {
 			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_LAUNCHER);
 			other->Delete();
+			m_upgradeSound->play();
 		}else if (other->GetIdentifier() == "upgrade_suncannon") {
 			static_cast<LD32*>(m_slayer->GetScene()->GetGame())->Unlock(WT_SUNCANNON);
 			other->Delete();
+			m_upgradeSound->play();
 		}
 	}
 }

@@ -8,7 +8,7 @@
         "enabled": true,
         "ambient": [150, 150, 150]
     },
-    "next": "assets/scripts/level_1.json",
+    "next": "assets/scripts/level_2.json",
     "ui": [
         {
             "childData": "assets/scripts/selector.json"

@@ -1,0 +1,45 @@
+{
+    "type": "vampire",
+    "size": [110, 330],
+    "health": 600,
+    "damage": 100,
+    "origin": "center",
+    "sprite": {
+        "sheet": {
+            "texture": "assets/images/vampire.png",
+            "sprites": [
+                { "left":0, "top":0, "width": 11, "height": 33},
+                { "left":11, "top":0, "width": 11, "height": 33},
+                { "left":22, "top":0, "width": 11, "height": 33},
+                { "left":33, "top":0, "width": 11, "height": 33}
+            ]
+        },
+        "animations": {
+            "default": {
+                "frames": [3,2,1,0],
+                "loop": false,
+                "speed": 0.1
+            },
+            "death": {
+                "frames": [0,1,2,3],
+                "loop": false,
+                "speed": 0.1
+            }
+        }
+    },
+    "body": {
+        "fixedRotation": true,
+        "linearDamping": 0.8,
+        "bullet": true,
+        "type":"dynamic",
+        "shapes": [
+            {"type":"box","width": 110, "height": 330, "category":8, "mask": 24}
+        ]
+    },
+    "children": [
+        {
+            "position": [55, -5],
+            "childData": "assets/scripts/healthbar.json"
+        }
+    ]
+}

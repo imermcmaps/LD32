@@ -3,6 +3,7 @@
     "size": [6, 6],
     "origin": "center",
     "damage": 0,
+    "despawn": 5,
     "sprite": {
         "sheet": {
             "texture": "assets/images/particle.png",

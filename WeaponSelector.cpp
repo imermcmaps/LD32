@@ -13,7 +13,6 @@ WeaponSelector::WeaponSelector(engine::Scene* scene): Node(scene), m_current(WT_
 }
 
 WeaponSelector::~WeaponSelector() {
-	std::cout << "~WeaponSelector" << std::endl;
 	m_scene->GetGame()->OnKeyDown.RemoveHandler(&m_keyListener);
 	delete m_disabledSound;
 }

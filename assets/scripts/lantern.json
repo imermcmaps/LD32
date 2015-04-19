@@ -14,7 +14,7 @@
     "children": [
         { 
             "type":"light",
-            "radius":150,
+            "radius":250,
             "color": [255, 163, 45],
             "position": [25, 11]         
         }

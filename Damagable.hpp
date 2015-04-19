@@ -1,6 +1,7 @@
 #ifndef LD32_ENEMY_HPP
 #define	LD32_ENEMY_HPP
 #include <Engine/SpriteNode.hpp>
+#include <SFML/Audio.hpp>
 
 #include "misc.hpp"
 class Damagable: public engine::SpriteNode {
@@ -21,6 +22,8 @@ protected:
 	bool m_hit;
 	ContactHandler m_preCH;
 	float m_invulnTime;
+	sf::Sound* m_deathSound;
+	sf::Sound* m_hurtSound;
 public:
 	Damagable(engine::Scene* scene);
 	virtual ~Damagable();

@@ -1,0 +1,462 @@
+{
+    "size": [3000, 1152],
+    "pixelToMeter": 60.0,
+    "gravity": [0, 5],
+    "respawn": [100, 100],
+    "debug": false,
+    "light": {
+        "enabled": true,
+        "ambient": [100, 100, 100]
+    },
+    "next": "assets/scripts/level_3.json",
+    "ui": [
+        {
+            "childData": "assets/scripts/selector.json"
+        },
+        {
+            "childData": "assets/scripts/ui_paused.json"
+        },
+        {
+            "type": "text",
+            "position": [850, 20],
+            "identifier": "score",
+            "text": {
+                "font": "assets/lcd_solid.ttf",
+                "size": 20,
+                "text": "Score: 0"
+            }
+        },
+        {
+            "type": "text",
+            "position": [512, 260],
+            "identifier": "next",
+            "active": false,
+            "text": {
+                "align": "center",
+                "font": "assets/lcd_solid.ttf",
+                "size": 20,
+                "text": "You slayed all vampires! Press ENTER to proceed to the next level"
+            }
+        }
+    ],
+    "children": [
+        {
+            "type": "sprite",
+            "size": [3000, 1152],
+            "sprite": {
+                "texture": "assets/images/level2.png"
+            }
+        },
+        {
+            "type": "node",
+            "body": {
+                "type": "static",
+                "shapes": [
+                    {
+                        "type": "edge",
+                        "points": [[0, 0], [0, 1152]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[0, 1152], [3000, 1152]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[3000, 1152], [3000, 0]]
+                    },
+                    {
+                        "type": "edge",
+                        "points": [[3000, 0], [0, 0]]
+                    }
+                ]
+            }
+        },
+        {
+            "children": [
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [62, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [185, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [308, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [431, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [554, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [590, 62]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [637, 139]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [677, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [760, 139]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [800, 359]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [635, 98]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [635, 110]
+                },
+                {
+                    "identifier": "upgrade_launcher",
+                    "childData": "assets/scripts/crate_upgrade.json",
+                    "position": [780, 103]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [923, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1046, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1169, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1292, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1415, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1538, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1661, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1784, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1907, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2030, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2153, 359]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [67, 233]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [576, 245]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1094, 253]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1529, 253]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1953, 253]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2502, 248]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2276, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2399, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2522, 359]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2790, 360]
+                }, {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [1836, 134]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2125, 151]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [2395, 203]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [1703, 293]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2912, 360]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [3035, 360]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2709, 502]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2971.999267578125, 324.0968017578125],
+                    "rotation": -0.0094884121790528297
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2971.994140625, 283.22732543945313],
+                    "rotation": -0.011280616745352745
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2933.840576171875, 324.10009765625],
+                    "rotation": 1.2093484656361397e-005
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2892, 323.99972534179687]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2932.072265625, 283.2650146484375],
+                    "rotation": 0.1167655885219574
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2976.9912109375, 242.61677551269531],
+                    "rotation": 0.041415780782699585
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2891, 245]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2763, 438]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2604, 593]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2593, 651]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2470, 651]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2347, 651]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2224, 651]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2103, 729]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1980, 803]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [2832, 501.99984741210937]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [2908, 436]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [2885, 436]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [2663, 578]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [2663, 604]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [2817, 424]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2849.10107421875, 465.99972534179687],
+                    "rotation": 0.0004459632036741823
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2341.99365234375, 615.10028076171875],
+                    "rotation": 9.1712478024419397e-005
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [2193.630615234375, 323.10006713867187],
+                    "rotation": -0.00018422691209707409
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [2446, 585.60009765625]
+                },
+                {
+                    "childData": "assets/scripts/vampire.json",
+                    "position": [2929.008056640625, 212.9228515625]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [1994, 470]
+                },
+                {
+                    "childData": "assets/scripts/enemy_bat.json",
+                    "position": [1902, 741]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1846, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1723, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1600, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1477, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1354, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1231, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar_v.json",
+                    "position": [1108, 871]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1031, 824]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1031, 701]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1031, 578]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1031, 455]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1031, 436]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2065, 624]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [2332, 559]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1755, 723]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1556, 728]
+                },
+                {
+                    "childData": "assets/scripts/lantern.json",
+                    "position": [1206, 719]
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1074, 834.9981689453125],
+                    "rotation": 0.2762959897518158
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1116, 835.10150146484375],
+                    "rotation": 270.00027465820312
+                },
+                {
+                    "childData": "assets/scripts/crate.json",
+                    "position": [1067.5296630859375, 794.31976318359375],
+                    "rotation": -0.14331820607185364
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1902, 543]
+                },
+                {
+                    "childData": "assets/scripts/pillar.json",
+                    "position": [1902, 435]
+                },
+                {
+                    "childData": "assets/scripts/vampire_huge.json",
+                    "position": [1200, 794]
+                }
+            ]
+        },
+        {
+            "position": [100, 100],
+            "childData": "assets/scripts/slayer.json"
+        }
+    ]
+}

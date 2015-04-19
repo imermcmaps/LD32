@@ -11,8 +11,9 @@
 #include "Engine/util/Random.hpp"
 #include <iostream>
 
-Vampire::Vampire(engine::Scene* scene): Damagable(scene), m_targetPoint(0,0) {
-	
+Vampire::Vampire(engine::Scene* scene): Damagable(scene), m_targetPoint(0,0), m_targetTime(0) {
+	m_deathSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/vampire_death.wav");
+	m_hurtSound = engine::ResourceManager::instance()->MakeSound("assets/sounds/vampire_hurt.wav");
 }
 
 Vampire::~Vampire() {
@@ -28,7 +29,7 @@ void Vampire::OnUpdate(sf::Time interval) {
 		m_targetPoint = (slayer->GetGlobalPosition());
 	}
 	auto delta = m_targetPoint-GetGlobalPosition();
-	if (abs(delta.x) < 500 && abs(delta.x) > 10) {
+	if (abs(delta.y) < 300 && abs(delta.x) < 500 && abs(delta.x) > 10) {
 		const float v = 2 * interval.asSeconds() ;
 		m_body->ApplyLinearImpulse(b2Vec2(v * (delta.x > 0?1:-1), r() < 0.005?-5:0), m_body->GetWorldCenter(), true);
 	}

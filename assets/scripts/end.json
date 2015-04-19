@@ -1,0 +1,65 @@
+{
+    "size": [1024, 576],
+    "pixelToMeter": 60.0,
+    "gravity": [0, 5],
+    "respawn": [100, 100],
+    "debug": false,
+    "light": {
+        "enabled": true,
+        "ambient": [100, 100, 100]
+    },
+    "next": "assets/scripts/level_1.json",
+    "ui": [
+        
+        {
+            "type": "text",
+            "position": [512, 290],
+            "text": {
+                "align": "center",
+                "font": "assets/lcd_solid.ttf",
+                "size": 30,
+                "text": "Thanks for playing! :)"
+            }
+        },
+        {
+            "type": "text",
+            "position": [512, 250],
+            "identifier": "score",
+            "text": {
+                "align": "center",
+                "font": "assets/lcd_solid.ttf",
+                "size": 30,
+                "text": "Score: 0"
+            }
+        },
+        {
+            "type": "text",
+            "position": [512, 260],
+            "identifier": "next",
+            "active": false,
+            "text": {
+                "align": "center",
+                "font": "assets/lcd_solid.ttf",
+                "size": 20,
+                "text": "You slayed all vampires! Press ENTER to proceed to the next level"
+            }
+        },
+        {
+            "childData": "assets/scripts/ui_paused.json"
+        }
+    ],
+    "children": [
+        {
+            "type": "sprite",
+            "size": [1024, 576],
+            "sprite": {
+                "texture": "assets/images/title_screen_bg.png"
+            }
+        },
+        {
+            "childData": "assets/scripts/enemy_bat.json",
+            "position": [889, 104],
+            "active": false
+        }
+    ]
+}

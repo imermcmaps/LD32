@@ -15,7 +15,7 @@ LD32::~LD32() {
 }
 
 void LD32::StartGame() {
-	SwitchScene(engine::Factory::create<Level>("assets/scripts/level_1.json", this));
+	SwitchScene(engine::Factory::create<Level>("assets/scripts/level_2.json", this));
 }
 void LD32::Unlock(WeaponType wt){
 	m_unlocks[wt] = true;

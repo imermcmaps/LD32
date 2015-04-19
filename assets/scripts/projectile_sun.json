@@ -7,7 +7,7 @@
     "despawn": 20,
     "transparent": true,
     "identifier": "sun",
-    "damage": 40,
+    "damage": 50,
     "sprite": {
         "sheet": "assets/scripts/weapon_sheet.json",
         "animations": {

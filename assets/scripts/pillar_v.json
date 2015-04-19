@@ -1,0 +1,16 @@
+{
+    "type": "sprite",
+    "size": [123, 30],
+    "origin":"center",
+    "opaque": false,
+    "sprite" : {
+        "sheet": "assets/scripts/misc_sheet.json",
+        "index": 8
+    },
+    "body": {
+        "type":"static",
+        "shapes": [
+            {"type": "box", "width": 123, "height": 30}
+        ]
+    }
+}
